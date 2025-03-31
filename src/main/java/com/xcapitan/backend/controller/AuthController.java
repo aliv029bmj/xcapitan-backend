@@ -33,7 +33,9 @@ public class AuthController {
                 new UsernamePasswordAuthenticationToken(request.getUsername(), request.getPassword())
         );
         SecurityContextHolder.getContext().setAuthentication(authentication);
-        return ResponseEntity.ok("Logged in successfully");
+        // Sadə token əvəzinə real JWT token generasiya etmək lazımdır
+        String token = "jwt-token-" + request.getUsername(); // Mock token, real JWT üçün jjwt kütüphanəsi istifadə edilə bilər
+        return ResponseEntity.ok(token);
     }
 
     @PostMapping("/logout")
